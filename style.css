@@ -1,0 +1,351 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #02030a;
+}
+
+#scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #25204b 0%,
+            #0b0920 35%,
+            #02030a 75%
+        );
+
+    cursor: grab;
+}
+
+#scene:active {
+    cursor: grabbing;
+}
+
+
+/* =========================
+   ESTRELLAS
+========================= */
+
+#stars {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px white;
+}
+
+
+/* =========================
+   GALAXIA
+========================= */
+
+#galaxy {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 0;
+    height: 0;
+
+    z-index: 3;
+
+    transform-origin: center;
+
+    transition: transform 0.05s linear;
+}
+
+
+/* =========================
+   FLORES
+========================= */
+
+.flower {
+    position: absolute;
+
+    width: var(--size);
+    height: var(--size);
+
+    left: 0;
+    top: 0;
+
+    transform:
+        translate(
+            var(--x),
+            var(--y)
+        )
+        rotate(
+            var(--rotation)
+        );
+
+    z-index: 5;
+}
+
+
+/* PÉTALOS */
+
+.petal {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 45%;
+    height: 45%;
+
+    transform-origin: 0 0;
+
+    border-radius: 100% 0 100% 0;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #fffca8,
+            #ffe52e 45%,
+            #e8a800 100%
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(255, 220, 40, 0.8);
+}
+
+
+/* Cada pétalo */
+
+.petal1 {
+    transform:
+        rotate(0deg)
+        translateX(2px);
+}
+
+.petal2 {
+    transform:
+        rotate(60deg)
+        translateX(2px);
+}
+
+.petal3 {
+    transform:
+        rotate(120deg)
+        translateX(2px);
+}
+
+.petal4 {
+    transform:
+        rotate(180deg)
+        translateX(2px);
+}
+
+.petal5 {
+    transform:
+        rotate(240deg)
+        translateX(2px);
+}
+
+.petal6 {
+    transform:
+        rotate(300deg)
+        translateX(2px);
+}
+
+
+/* CENTRO DE LA FLOR */
+
+.flowerCenter {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 25%;
+    height: 25%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff59a,
+            #a86d00
+        );
+
+    box-shadow:
+        0 0 8px
+        #ffd52e;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   TEXTO CENTRAL
+========================= */
+
+#center {
+    position: absolute;
+
+    z-index: 20;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    width: min(
+        430px,
+        85vw
+    );
+
+    padding: 30px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(
+            5,
+            5,
+            20,
+            0.65
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            220,
+            80,
+            0.25
+        );
+
+    backdrop-filter:
+        blur(8px);
+
+    color: white;
+}
+
+
+.heart {
+    font-size: 45px;
+
+    animation:
+        heartbeat
+        2s
+        infinite;
+}
+
+
+#center h1 {
+    margin: 10px 0;
+
+    color: #ffe34d;
+
+    font-size: 45px;
+
+    text-shadow:
+        0 0 20px
+        #ffd21f;
+}
+
+
+#center p {
+    line-height: 1.6;
+
+    font-size: 17px;
+}
+
+
+#center small {
+    color: #ffe985;
+}
+
+
+/* =========================
+   MENSAJE INFERIOR
+========================= */
+
+#hint {
+    position: absolute;
+
+    z-index: 30;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.45
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
